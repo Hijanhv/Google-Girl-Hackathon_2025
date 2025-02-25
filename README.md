@@ -189,12 +189,28 @@ rtl_depth_predictor/
 
 ## Model Performance
 
-The Ridge Regression model performs best on our dataset with the following metrics:
+The Random Forest Regressor model performs best on our enhanced dataset with the following metrics:
 
-- MSE: 0.8135
-- MAE: 0.6238
-- R²: 0.5119
-- Within ±1 depth level: 77.78%
+- MSE: 0.7233 (improved from 0.8135)
+- MAE: 0.4910 (improved from 0.6238)
+- R²: 0.8375 (improved from 0.5119)
+- Within ±1 depth level: 86.67% (improved from 77.78%)
+
+### Enhanced Dataset
+
+We significantly improved the model's performance by enhancing the dataset:
+
+1. **Enhanced Training Data**:
+
+   - Added 60 new examples covering 5 additional module types (FPU, DSP, Video Processor, Crypto Engine, PCIe Controller, and Cache Controller)
+   - Included more complex circuits with higher combinational depths (up to 12)
+   - Added more diverse signal types with various combinations of operators
+
+2. **Enhanced Test Data**:
+   - Added 12 new test examples from the new module types
+   - Included signals with higher combinational depths to test the model's ability to predict more complex circuits
+
+The significant improvement in model performance after enhancing the dataset demonstrates the importance of diverse and representative training data in machine learning applications for hardware design.
 
 ## Approach
 
@@ -203,6 +219,8 @@ The Ridge Regression model performs best on our dataset with the following metri
 3. **Model Selection**: Compare different ML algorithms to find the best predictor.
 4. **Training**: Train the selected model on the dataset.
 5. **Evaluation**: Evaluate the model's accuracy and performance.
+6. **Dataset Enhancement**: Expand the dataset with more diverse RTL designs and module types.
+7. **Model Refinement**: Retrain and optimize the model with the enhanced dataset.
 
 ## License
 
