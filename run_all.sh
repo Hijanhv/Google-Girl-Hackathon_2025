@@ -1,5 +1,6 @@
 #!/bin/bash
 # Script to run the complete RTL Combinational Depth Predictor pipeline
+# Note: On Windows, use 'python' instead of 'python3'
 
 # Don't exit on error, we'll handle errors gracefully
 set +e

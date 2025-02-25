@@ -56,9 +56,26 @@ mkdir -p models plots
 The easiest way to run the pipeline is using the `run_pipeline.py` script:
 
 ```bash
+# On Unix/macOS
+# Train the model and compare different model types
+python3 run_pipeline.py --train --compare_models
+
+# On Windows
 # Train the model and compare different model types
 python run_pipeline.py --train --compare_models
+```
 
+For predicting depth or running tests:
+
+```bash
+# On Unix/macOS
+# Predict depth for a signal in an RTL file
+python3 run_pipeline.py --predict --rtl_file path/to/your/rtl_file.v --signal signal_name
+
+# Run tests
+python3 run_pipeline.py --test
+
+# On Windows
 # Predict depth for a signal in an RTL file
 python run_pipeline.py --predict --rtl_file path/to/your/rtl_file.v --signal signal_name
 
@@ -69,22 +86,46 @@ python run_pipeline.py --test
 ### Training the Model
 
 ```bash
+# On Unix/macOS
+# Basic training
+python3 src/train_model.py --data_path data/training_data.csv --test_data_path data/test_data.csv --model_output models/depth_predictor.joblib
+
+# On Windows
 # Basic training
 python src/train_model.py --data_path data/training_data.csv --test_data_path data/test_data.csv --model_output models/depth_predictor.joblib
+```
 
-# Compare different model types
+For comparing different model types:
+
+```bash
+# On Unix/macOS
+python3 src/train_model.py --data_path data/training_data.csv --test_data_path data/test_data.csv --model_output models/depth_predictor.joblib --compare_models --plot_results
+
+# On Windows
 python src/train_model.py --data_path data/training_data.csv --test_data_path data/test_data.csv --model_output models/depth_predictor.joblib --compare_models --plot_results
 ```
 
 ### Predicting Combinational Depth
 
 ```bash
+# On Unix/macOS
+python3 src/predict_depth.py --rtl_file path/to/your/rtl_file.v --signal signal_name --model_path models/depth_predictor.joblib
+
+# On Windows
 python src/predict_depth.py --rtl_file path/to/your/rtl_file.v --signal signal_name --model_path models/depth_predictor.joblib
 ```
 
 ### Evaluating the Model
 
 ```bash
+# On Unix/macOS
+# Evaluate on test data
+python3 evaluate_model.py
+
+# Generate detailed visualizations
+python3 visualize_results.py
+
+# On Windows
 # Evaluate on test data
 python evaluate_model.py
 
@@ -95,7 +136,25 @@ python visualize_results.py
 ### Running Tests
 
 ```bash
+# On Unix/macOS
+python3 -m unittest discover tests
+
+# On Windows
 python -m unittest discover tests
+```
+
+### Running the Complete Pipeline with Shell Script
+
+On Unix/macOS:
+
+```bash
+bash run_all.sh
+```
+
+On Windows (using Git Bash or WSL):
+
+```bash
+bash run_all.sh
 ```
 
 ## Project Structure

@@ -30,7 +30,7 @@ def run_train():
     """Run the training script."""
     print("=== Training the Model ===")
     cmd = [
-        "python3", "src/train_model.py",
+        "python", "src/train_model.py",
         "--data_path", "data/training_data.csv",
         "--test_data_path", "data/test_data.csv",
         "--model_output", "models/depth_predictor.joblib"
@@ -66,7 +66,7 @@ def run_predict(rtl_file, signal):
         print("Attempting to proceed with limited functionality...")
     
     cmd = [
-        "python3", "src/predict_depth.py",
+        "python", "src/predict_depth.py",
         "--rtl_file", rtl_file,
         "--signal", signal,
         "--model_path", "models/depth_predictor.joblib"
@@ -83,7 +83,7 @@ def run_predict(rtl_file, signal):
 def run_tests():
     """Run the tests."""
     print("=== Running Tests ===")
-    cmd = ["python3", "-m", "unittest", "discover", "tests"]
+    cmd = ["python", "-m", "unittest", "discover", "tests"]
     
     # Run the command
     subprocess.run(cmd)
